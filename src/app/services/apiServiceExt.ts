@@ -2,12 +2,13 @@ import axios from 'axios';
 
 
 
-
 export const post = async function (url: string, body: any, token: string) {
 
     try {
-       
-        let resp = await axios.post(process.env.REACT_URL_LOGIN_BACK + url, body,
+       console.log(process.env.REACT_APP_URL_LOGIN_BACK);
+        let resp = await axios.post(
+            process.env.REACT_APP_URL_LOGIN_BACK +"/api/"+ url,
+            body,
             {
                 headers: {
                     'Content-Type': 'application/json',
@@ -31,7 +32,8 @@ export const post = async function (url: string, body: any, token: string) {
 export const get = async function (url: string, token: string) {
 
     try {
-        let resp = await axios.get(process.env.REACT_URL_LOGIN_BACK + url,
+        let resp = await axios.get(
+            process.env.REACT_APP_URL_LOGIN_BACK +"/api/"+ url,
             {
                 headers: {
                     'Content-Type': 'application/json',
