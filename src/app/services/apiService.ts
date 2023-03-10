@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { env_var } from '../environments/env';
 
 import { getFormDataHeader, getHeaderInfo, getHeaderInitial } from './tokenCreator';
 
@@ -25,10 +26,7 @@ const handleResponse = (response: any) => {
 export const post = async function (url: string, body: any) {
     let header = await getHeaderInfo();
     try {
-        let resp = await axios.post(
-            process.env.REACT_URL_REPORT_BACK  + url,
-            body,
-            header);
+        let resp = await axios.post(`${env_var.BASE_URL}` + url, body, header);
 
 
         return handleResponse(resp.data);
